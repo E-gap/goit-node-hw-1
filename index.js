@@ -5,7 +5,7 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const contacts = await contactsOperations.getListContacts();
-      console.log(contacts);
+      console.table(contacts);
       break;
 
     case "get":
@@ -13,7 +13,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       if (!contactById) {
         throw new Error(`Contact with id=${id} doesn ton exist`);
       }
-      console.log(contactById);
+      console.table(contactById);
       break;
 
     case "add":
@@ -22,7 +22,7 @@ async function invokeAction({ action, id, name, email, phone }) {
         email,
         phone
       );
-      console.log(addedContact);
+      console.table(addedContact);
       break;
 
     case "remove":
@@ -30,7 +30,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       if (!removedContact) {
         throw new Error(`Contact with id=${id} does not exist`);
       }
-      console.log(removedContact);
+      console.table(removedContact);
       break;
 
     default:
